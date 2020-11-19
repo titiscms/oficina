@@ -1,0 +1,181 @@
+/*============================================*\
+				    GERAL
+\*============================================*/
+
+body {
+	font-family: 'Catamaran', sans-serif;
+}
+
+
+/*============================================*\
+			       FORMATOS
+\*============================================*/
+.modal-content {
+	width: 46.6rem;
+	/* height: 42.1rem; */
+    padding: 24px;
+}
+
+.box {
+	width: 744px;
+	height: 671px;
+	
+	background-color: #FFFFFF;
+	border-radius: 8px;
+}
+
+
+/*============================================*\
+			        TITULOS
+\*============================================*/
+.modalTitulo {
+	font-family: 'Baloo 2', cursive;
+	font-weight: 700;
+	font-size: 24px;
+}
+
+.modal-header {
+	border-bottom: 0;
+}
+
+.labelTextField {
+	font-size: 12px;
+	background-color: #FFFFFF;
+	padding: 0 10px;
+	position:absolute;
+	top:-8px;
+	left:20px;
+	
+}
+
+
+/*============================================*\
+			        INPUT
+\*============================================*/
+
+.inputGroupLarge {
+	height: 56px;
+}
+
+.inputGroupLarge:focus, .botao:focus {
+	border: 1px solid #000000;
+  	box-shadow: none;
+}
+
+.inputDate {
+	background-image: url(/assets/icones/calendar_icon.svg);
+	background-repeat: no-repeat;
+	background-size: 1.2rem 1.2rem;
+	background-position: 0.5rem;
+	
+	padding-left: 40px;
+}
+
+
+/*============================================*\
+			        BOTOES
+\*============================================*/
+.modal-footer {
+	border-top: 0;
+	justify-content: space-between;
+}
+
+.linkVoltar {
+	color: #7B0B9A;
+	font-weight: 700;	
+}
+
+.linkVoltar:hover {
+	color: #450445;
+	text-decoration: none;
+}
+
+.botao {
+	border-radius: 20px;
+	width: 168px;
+	height: 40px;
+	color: #FFFFFF;
+	background-color: #7B0B9A;
+	font-weight: 700;
+}
+
+.botao:hover {
+	border-radius: 20px;
+	width: 168px;
+	height: 40px;
+	color: #FFFFFF;
+	background-color: #450445;
+}
+
+.modal-header .close {
+	padding: 0;	
+}
+
+a.close {
+	color: #FFC8F4;
+	background-color: #000000;
+	opacity: 1;
+	border-radius: 50%;
+}
+
+a.close:hover {
+	color: #FFB7F0;
+	opacity: 1;
+}
+
+a.linkVoltar {
+	color: #7B0B9A;
+}
+
+a.linkVoltar:hover {
+	color: #450445;
+}
+
+
+/*============================================*\
+				     TABELA
+\*============================================*/
+div.form-group.col-md {
+	margin-bottom: 0;
+}
+
+div.form-group.col-md-6 {
+	margin-bottom: 30px;
+}
+
+.table {
+	background-color: #EFEFEF;
+	margin-bottom: 0;
+}
+
+.scroll {
+	display: block;
+	height: 265px;
+	overflow-y: auto;
+}
+
+.table th {
+	padding: .8rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	font-size: 18px;
+}
+
+.table td  {
+	padding: 1.5rem .8rem 1.5rem .8rem;
+	font-size: 14px;
+}
+
+.linkDetalhes {
+	color: #FF7800;
+	text-decoration: underline;
+}
+
+.linkDetalhes:hover {
+	color: #BE5900;
+	text-decoration: none;
+}
+
+
+	
+	
