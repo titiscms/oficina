@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,26 +11,80 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
+		<!-- CSS EXTERNO -->
+		<link rel="stylesheet" href="/css/layout.css">
 		<!-- CSS -->
-		<link rel="stylesheet" href="/css/layout/layout-geral.css">
+		<style>
+			.titulo-inicial {
+				font-size: 32px;
+				text-align: center;
+			}
+		
+			.link-inicial {
+				height: 129px;
+				color: #FFFFFF;
+				background-color: #702094;
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				border-radius: 8px;
+				font-weight: 700;
+				text-align: center;
+				padding: 40px;
+				font-size: 18px;
+				margin-bottom: 25px
+			}
+				
+			.link-inicial:hover {
+				color: #5C3566;
+				text-decoration: none;
+				background-color: #450445;
+			}
+			
+			.modal-header {
+				display: block;
+			}
+
+		</style>
 		<title>Home</title>
 	</head>
 	<body>
 		<div class="modal fade" id="modalHome" data-backdrop="static">
 			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
+				
 					<div class="modal-header">
-						<h1 class="modal-title modalTitulo">Sistema da oficina da MJV!</h1>
+						<h1 class="modal-title modalTitulo titulo-inicial">Sistema da oficina da MJV!</h1>
 					</div>
+					
 					<div class="modal-body">
-						<div class="container-fluid">
-							<a href="/home/registro" class="btn btn-primary">Registro de defeitos veiculares</a>
-							<a href="/home/pesquisa" class="btn btn-primary">Pesquisar registros de defeitos veiculares</a>
-							<a href="/home/cadastro-veiculo" class="btn btn-primary">Cadastrar tipos de veículos</a>
-							<a href="/home/cadastro-peca" class="btn btn-primary">Cadastrar peças</a>
-							<a href="/home/cadastro-defeito" class="btn btn-primary">Cadastrar defeitos</a>
+					
+						<div class="row">
+							<div class="col-sm">
+								<a href="/registro/novo" class="link-inicial btn-block">Registro de defeitos veiculares</a>
+							</div>
+							<div class="col-sm">
+								<a href="/registro" class="link-inicial btn-block">Pesquisar registros de defeitos veiculares</a>
+							</div>
 						</div>
+						
+						<div class="row">
+							<div class="col-sm">
+								<a href="/veiculo/novo" class="link-inicial btn-block">Cadastrar tipos de veículos</a>
+							</div>
+							<div class="col-sm">	
+								<a href="/peca/novo" class="link-inicial btn-block">Cadastrar peças</a>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-sm">		
+								<a href="/defeito/novo" class="link-inicial btn-block" style="margin-bottom: 0;">Cadastrar defeitos</a>
+							</div>
+						</div>	
+							
 					</div>
+					
 				</div>
 			</div>
 		</div>
@@ -41,9 +96,9 @@
 		<!-- ICONES -->
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<!-- JS -->
-		<script src="/js/layout/layout-geral.js"></script>
 		<script type="text/javascript">
-			$('#modalHome').modal('show')
+			// Abrir o modal
+			$('#modalHome').modal('show');
 		</script>
 	</body>
 </html>

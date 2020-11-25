@@ -1,0 +1,113 @@
+DROP TABLE IF EXISTS TB_DEFEITO;
+DROP TABLE IF EXISTS TB_PECA;
+DROP TABLE IF EXISTS TB_VEICULO;
+DROP TABLE IF EXISTS TB_REGISTRO;
+
+DROP TABLE IF EXISTS TB_DEFEITO_PECA;
+DROP TABLE IF EXISTS TB_PECA_VEICULO;
+
+
+-- DEFEITO --
+CREATE TABLE IF NOT EXISTS TB_DEFEITO (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	descricao VARCHAR(250) NOT NULL UNIQUE
+);
+
+
+-- PEÇA --
+CREATE TABLE IF NOT EXISTS TB_PECA (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	descricao VARCHAR(250) NOT NULL UNIQUE
+);
+
+
+-- VEICULO --
+CREATE TABLE IF NOT EXISTS TB_VEICULO (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	tipo VARCHAR(250) NOT NULL UNIQUE
+);
+
+
+-- REGISTRO --
+CREATE TABLE IF NOT EXISTS TB_REGISTRO (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	cliente VARCHAR(250) NOT NULL,
+	data_inclusao TIMESTAMP NOT NULL,
+	id_defeito INT NOT NULL,
+	id_peca INT NOT NULL,
+	id_veiculo INT NOT NULL,
+	FOREIGN KEY (id_defeito) REFERENCES TB_DEFEITO (id),
+	FOREIGN KEY (id_peca) REFERENCES TB_PECA (id),
+	FOREIGN KEY (id_veiculo) REFERENCES TB_VEICULO (id)
+);
+
+
+-- ASSOCIAR DEFEITO A PEÇA --
+CREATE TABLE IF NOT EXISTS TB_DEFEITO_PECA (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	id_peca INT NOT NULL,
+	id_defeito INT NOT NULL,
+	FOREIGN KEY (id_peca) REFERENCES TB_PECA (id),
+	FOREIGN KEY (id_defeito) REFERENCES TB_DEFEITO (id)
+);
+
+
+-- ASSOCIAR PECA A VEICULO --
+CREATE TABLE IF NOT EXISTS TB_PECA_VEICULO (
+	id INT AUTO_INCREMENT  PRIMARY KEY,
+	id_peca INT NOT NULL,
+	id_veiculo INT NOT NULL,
+	FOREIGN KEY (id_peca) REFERENCES TB_PECA (id),
+	FOREIGN KEY (id_veiculo) REFERENCES TB_VEICULO (id)
+);
+
+
+-- INSERÇAO DADOS DEFEITO --
+INSERT INTO TB_DEFEITO (descricao) VALUES
+	('Furo'),
+	('Ferrugem'),
+	('Risco'),
+	('Vazamento Gás');
+	
+	
+-- INSERÇAO DADOS PEÇA --
+INSERT INTO TB_PECA (descricao) VALUES
+	('Roda'),
+	('Motor'),
+	('Para-choque'),
+	('Mangueira'),
+	('Ar condicionado');
+	
+	
+-- INSERÇAO DADOS VEICULO --
+INSERT INTO TB_VEICULO (tipo) VALUES
+	('Carro'),
+	('Lancha'),
+	('Moto');
+	
+-- INSERÇAO DADOS REGISTRO --
+INSERT INTO TB_REGISTRO (cliente, data_inclusao, id_defeito, id_peca, id_veiculo) VALUES
+	('Sidney Matagal', '2020-12-12T00:00:00', 2, 2, 1),
+	('Daniela de Mercúrio', '2020-12-13T00:10:00', 4, 5, 1),
+	('Pequeno Carlos Marrom', '2020-12-14T00:20:00', 1, 1, 2),
+	('Amanda Aparecida', '2020-12-15T00:20:00', 2, 1, 3),
+	('Gustavo deOliveira', '2020-12-16T00:20:00', 1, 2, 2);
+
+-- INSERÇAO ASSOCIAR DEFEITO A PEÇA --
+INSERT INTO TB_DEFEITO_PECA (id_peca, id_defeito) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 2),
+	(3, 3),
+	(4, 1),
+	(4, 4);
+	
+-- INSERÇAO ASSOCIAR PECA A VEICULO -- --
+INSERT INTO TB_PECA_VEICULO (id_peca, id_veiculo) VALUES
+	(1, 1),
+	(2, 1),
+	(3, 2),
+	(1, 3);
+
+
+  

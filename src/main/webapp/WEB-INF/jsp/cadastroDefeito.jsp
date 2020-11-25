@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,42 +11,57 @@
 		<link rel="preconnect" href="https://fonts.gstatic.com">
 		<link href="https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap" rel="stylesheet">
 		<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
-		<!-- CSS -->
-		<link rel="stylesheet" href="/css/layout/layout-geral.css">
+		<!-- CSS EXTERNO -->
+		<link rel="stylesheet" href="/css/layout.css">
 		<title>Cadastro Defeito</title>
 	</head>
 	<body>
 		<div class="modal fade" id="modalCadastroDefeito" data-backdrop="static">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
+				
+					<c:if test='${not empty mensagem}'>
+						<div class="alert alert-danger alert-dismissible" style="padding-bottom: 30px;" role="alert">
+							<c:out value="${mensagem}" />
+							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+					</c:if>
+				
 					<div class="modal-header">
 						<h5 class="modal-title modalTitulo">Cadastro de defeito</h5>
 						<a type="button" class="close" href="/home">
 							<span class="iconify" data-icon="bi-x-circle-fill" data-inline="false"></span>
 						</a>
 					</div>
-					<div class="modal-body">
-						<form>
+					
+					<div class="modal-body" style="padding-top: 0;">
+						<form action="/defeito/cadastrar" method="post">
+						
+							<p style="margin-bottom: 30px;">Cadastre todo tipo de defeito relacionado ao veículo:</p>
 							<div class="form-row">
 								<div class="form-group col-md-12">
-									<p>Cadastre todo tipo de defeito relacionado ao veículo:</p>
-									<label for="inputDefeito" class="col-form-label labelTextField js-label" hidden="hidden">Defeito</label>
-									<input type="text" class="form-control inputGroupLarge js-input" id="inputDefeito" name="inputDefeito" placeholder="Digite aqui o nome do defeito" required>
+									<label for="inputDescricaoDefeito" class="col-form-label labelTextField js-label">Descricao</label>
+									<input type="text" class="form-control inputGroupLarge js-input" id="inputDescricaoDefeito" name="descricao"
+										   placeholder="Digite aqui o nome do defeito" autocomplete="off" />
 								</div>
 							</div>
+							
+							<div class="form-row modal-footer--btn">
+								<a href="/home" class="align-self-center linkVoltar">
+									<span class="iconify" data-icon="bi:arrow-left-short" data-inline="false"></span>Voltar ao menu
+								</a>
+								<button id="botaoSalvar" type="submit" class="btn botao" disabled="disabled">Salvar</button>
+							</div>
+							
 						</form>
 					</div>
 
-					<div class="modal-footer">
-						<a href="/home" class="linkVoltar">
-							<span class="iconify" data-icon="bi:arrow-left-short" data-inline="false"></span>Voltar ao menu
-						</a>
-						<button type="submit" class="btn botao">Salvar</button>
-					</div>
 				</div>
 			</div>
 		</div>
-		
+			
 		<!-- JQUERY -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 		<!-- BOOTSTRAP -->
@@ -53,9 +69,23 @@
 		<!-- ICONES -->
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<!-- JS -->
-		<script src="/js/layout/layout-geral.js"></script>
 		<script type="text/javascript">
-			$('#modalCadastroDefeito').modal('show')
+			// Abrir o modal
+			$('#modalCadastroDefeito').modal('show');
+
+			// Dar foco no input do nome do Cliente quando o modal estiver aberto
+			$('#modalCadastroDefeito').on('shown.bs.modal', function (e) {
+				$('#inputDescricaoDefeito').focus();
+			});
+
+			// Desabilitar o botão salvar
+			$('#inputDescricaoDefeito').on('input', function() {
+				if($('#inputDescricaoDefeito').val() == '') {
+					$('#botaoSalvar').attr('disabled', true);
+				} else {
+					$('#botaoSalvar').removeAttr('disabled');
+				}
+			});
 		</script>
 	</body>
 </html>

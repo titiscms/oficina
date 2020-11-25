@@ -13,24 +13,18 @@
 		<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap" rel="stylesheet">
 		<!-- CSS EXTERNO -->
 		<link rel="stylesheet" href="/css/layout.css">
-		<title>Item cadastrado</title>
+		<title>Registro</title>
 	</head>
 	<body>
-		<div class="modal fade" id="modalItemCadastrado" data-backdrop="static">
-			<div class="modal-dialog modal-dialog-centered">
+		<div class="modal fade" id="modalHome" data-backdrop="static">
+			<div class="modal-dialog modal-lg modal-dialog-centered">
 				<div class="modal-content">
-				
 					<div class="modal-header">
-						<h5 class="modal-title modalTitulo">Cadastro feito com sucesso.</h5>
+						<h1 class="modal-title modalTitulo titulo-inicial">Registro</h1>
 					</div>
-					
-					<div class="form-row modal-footer--btn">
-						<a href="/registro/novo" class="align-self-center linkVoltar">
-							<span class="iconify" data-icon="bi:arrow-left-short" data-inline="false"></span>Registro dos defeitos
-						</a>
-						<a href="/<c:out value='${recurso}' />/novo" id="botaoSalvar" class="btn botao">Novo cadastro</a>
+					<div class="modal-body">
+							TESTE	
 					</div>
-					
 				</div>
 			</div>
 		</div>
@@ -43,8 +37,7 @@
 		<script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
 		<!-- JS -->
 		<script type="text/javascript">
-			// Abrir o modal
-			$('#modalItemCadastrado').modal('show');
+			$('#modalHome').modal('show')
 		</script>
 	</body>
 </html>

@@ -63,7 +63,7 @@ body {
 }
 
 .inputDate {
-	background-image: url(/assets/icones/calendar_icon.svg);
+	background-image: url(/images/icones/calendar_icon.svg);
 	background-repeat: no-repeat;
 	background-size: 1.2rem 1.2rem;
 	background-position: 0.5rem;
@@ -75,13 +75,15 @@ body {
 /*============================================*\
 			        BOTOES
 \*============================================*/
-.modal-footer {
-	border-top: 0;
+.modal-footer--btn {
+	margin-top: 30px;
+	padding: 5px;
 	justify-content: space-between;
 }
 
 .linkVoltar {
 	color: #7B0B9A;
+	vertical-align: middle;
 	font-weight: 700;	
 }
 
@@ -103,8 +105,12 @@ body {
 	border-radius: 20px;
 	width: 168px;
 	height: 40px;
-	color: #FFFFFF;
+	color: #5C3566;
 	background-color: #450445;
+}
+.botao:disabled {
+	color: #FFFFFF;
+	background-color: #BFBFBF;
 }
 
 .modal-header .close {
@@ -121,14 +127,6 @@ a.close {
 a.close:hover {
 	color: #FFB7F0;
 	opacity: 1;
-}
-
-a.linkVoltar {
-	color: #7B0B9A;
-}
-
-a.linkVoltar:hover {
-	color: #450445;
 }
 
 
@@ -175,7 +173,6 @@ div.form-group.col-md-6 {
 	color: #BE5900;
 	text-decoration: none;
 }
-
 
 	
 	
