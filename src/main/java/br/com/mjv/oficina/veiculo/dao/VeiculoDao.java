@@ -47,5 +47,12 @@ public interface VeiculoDao {
 	 * @return
 	 */
 	Veiculo findByName(String nomeVeiculo);
+
+	/**
+	 * Método para recuperar um {@link Veiculo} da base de dados passando o id do veiculo
+	 * @param veiculoId
+	 * @return
+	 */
+	Veiculo findById(Integer veiculoId);
 	
 }

@@ -91,7 +91,7 @@ INSERT INTO TB_REGISTRO (cliente, data_inclusao, id_defeito, id_peca, id_veiculo
 	('Daniela de Mercúrio', '2020-12-13T00:10:00', 4, 5, 1),
 	('Pequeno Carlos Marrom', '2020-12-14T00:20:00', 1, 1, 2),
 	('Amanda Aparecida', '2020-12-15T00:20:00', 2, 1, 3),
-	('Gustavo deOliveira', '2020-12-16T00:20:00', 1, 2, 2);
+	('Gustavo de Oliveira', '2020-12-16T00:20:00', 1, 2, 2);
 
 -- INSERÇAO ASSOCIAR DEFEITO A PEÇA --
 INSERT INTO TB_DEFEITO_PECA (id_peca, id_defeito) VALUES

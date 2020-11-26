@@ -18,5 +18,12 @@ public interface DefeitoService {
 	 * @return
 	 */
 	Integer save(Defeito defeito);
+
+	/**
+	 * Método para recuperar um {@link Defeito} da base de dados passando um id de defeito
+	 * @param defeitoId
+	 * @return
+	 */
+	Defeito findById(Integer defeitoId);
 	
 }

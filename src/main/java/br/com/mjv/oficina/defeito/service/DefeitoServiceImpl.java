@@ -42,4 +42,9 @@ public class DefeitoServiceImpl implements DefeitoService {
 		return defeitoDao.save(defeito);
 	}
 
+	@Override
+	public Defeito findById(Integer defeitoId) {
+		return defeitoDao.findById(defeitoId);
+	}
+
 }

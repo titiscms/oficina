@@ -9,13 +9,13 @@ import br.com.mjv.oficina.registro.model.Registro;
 public interface RegistroService {
 
 	/**
-	 * Método para recuperar um lista de {@link RegistroDto} da base de dados
+	 * Método para recuperar um lista de {@link RegistroDto} da base de dados.
 	 * @return
 	 */
 	List<RegistroDto> listAll();
 		
 	/**
-	 * Método para salvar um novo {@link Registro} na base de dados
+	 * Método para salvar um novo {@link Registro} na base de dados.
 	 * @param registro
 	 * @return
 	 */
@@ -29,12 +29,19 @@ public interface RegistroService {
 	List<RegistroDto> findRegistroByFilter(RegistroFilter filter);
 
 	/**
-	 * Método para incluir um novo {@link Registro} na base de dados;
+	 * Método para incluir um novo {@link Registro} na base de dados
 	 * @param ItensId
 	 * @param nomeCliente
 	 * @param veiculoId
 	 * @return
 	 */
 	void addRegistro(String[] ItensId, String nomeCliente, Integer veiculoId);
+
+	/**
+	 * Método para buscar um {@link Registro} passando o id do registro.
+	 * @param registroId
+	 * @return
+	 */
+	Registro findById(Integer registroId);
 
 }

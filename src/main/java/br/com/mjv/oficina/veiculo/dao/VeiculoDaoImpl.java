@@ -118,7 +118,7 @@ public class VeiculoDaoImpl implements VeiculoDao {
 		
 		List<VeiculoDto> veiculosDto = template.query(sql.toString(), params, new VeiculoDtoRowMapper());
 		
-		LOGGER.info("Inicio do método findPecaAndDefeitoFromVeiculo(Integer veiculoId)");
+		LOGGER.info("Fim do método findPecaAndDefeitoFromVeiculo(Integer veiculoId)");
 		
 		return veiculosDto;
 	}
@@ -126,6 +126,8 @@ public class VeiculoDaoImpl implements VeiculoDao {
 	@Override
 	public Veiculo findByName(String nomeVeiculo) {
 		try {
+			LOGGER.info("Inicio do método findByName()");
+			
 			MapSqlParameterSource params = new MapSqlParameterSource();
 			StringBuilder sql = new StringBuilder("SELECT * FROM TB_VEICULO WHERE UPPER(TIPO) = :nomeVeiculo");
 			
@@ -134,9 +136,32 @@ public class VeiculoDaoImpl implements VeiculoDao {
 			
 			Veiculo veiculoCadastrado = template.queryForObject(sql.toString(), params, new VeiculoRowMapper());
 			
+			LOGGER.info("Fim do método findByName()");
+			
 			return veiculoCadastrado;
 		} catch (EmptyResultDataAccessException e) {
 			LOGGER.error(String.format("Não existe cadastro do veiculo %s.", nomeVeiculo));
+			return null;
+		}
+	}
+	
+	@Override
+	public Veiculo findById(Integer veiculoId) {
+		try {
+			LOGGER.info("Inicio do método findById()");
+			
+			MapSqlParameterSource params = new MapSqlParameterSource();
+			StringBuilder sql = new StringBuilder("SELECT * FROM TB_VEICULO WHERE ID = :veiculoId");
+			
+			params.addValue("veiculoId", veiculoId);
+			
+			Veiculo veiculoCadastrado = template.queryForObject(sql.toString(), params, new VeiculoRowMapper());
+			
+			LOGGER.info("Fim do método findById()");
+			
+			return veiculoCadastrado;
+		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(String.format("Não existe cadastro do veiculo de id %d.", veiculoId));
 			return null;
 		}
 	}

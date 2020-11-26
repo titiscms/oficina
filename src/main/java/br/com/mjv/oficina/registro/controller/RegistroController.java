@@ -20,7 +20,11 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import br.com.mjv.oficina.defeito.model.Defeito;
+import br.com.mjv.oficina.defeito.service.DefeitoService;
 import br.com.mjv.oficina.exception.BusinnessException;
+import br.com.mjv.oficina.peca.model.Peca;
+import br.com.mjv.oficina.peca.service.PecaService;
 import br.com.mjv.oficina.registro.dto.RegistroDto;
 import br.com.mjv.oficina.registro.filter.RegistroFilter;
 import br.com.mjv.oficina.registro.model.Registro;
@@ -44,6 +48,12 @@ public class RegistroController {
 	
 	@Autowired
 	private VeiculoService veiculoService;
+	
+	@Autowired
+	private PecaService pecaService;
+	
+	@Autowired
+	private DefeitoService defeitoService;
 	
 	/**
 	 * Método para iniciar a página de registros de defeitos de veiculos, carregando os veiculos cadastrados na base e o
@@ -168,7 +178,20 @@ public class RegistroController {
 		
 		LOGGER.info("Inicio do método buscar()");
 		
+		Registro registro = registroService.findById(registroId);
+		Veiculo veiculo = veiculoService.findById(registro.getVeiculoId());
+		Peca peca = pecaService.findById(registro.getPecaId());
+		Defeito defeito = defeitoService.findById(registro.getDefeitoId());
+		
+		Date dataAlteracao = new Date();
+		
 		ModelAndView mv = new ModelAndView("registro");
+		mv.addObject("registro", registro);
+		mv.addObject("veiculo", veiculo);
+		mv.addObject("peca", peca);
+		mv.addObject("defeito", defeito);
+		
+		mv.addObject("dataAlteracao", dataAlteracao);
 		
 		LOGGER.info("Fim do método buscar()");
 		

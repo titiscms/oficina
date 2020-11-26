@@ -45,7 +45,7 @@ public class DefeitoDaoImpl implements DefeitoDao {
 	@Transactional
 	public Integer save(Defeito defeito) {
 		try {
-			LOGGER.info("Inicio do método save");
+			LOGGER.info("Inicio do método save()");
 			
 			SimpleJdbcInsert novoDefeito = new SimpleJdbcInsert(dataSource).usingGeneratedKeyColumns("id");
 			novoDefeito.withTableName("TB_DEFEITO");
@@ -53,7 +53,7 @@ public class DefeitoDaoImpl implements DefeitoDao {
 			Map<String, Object> params = new HashMap<>();
 			params.put("descricao", defeito.getDescricao());
 			
-			LOGGER.info("Fim do método save");
+			LOGGER.info("Fim do método save()");
 			
 			return (Integer) novoDefeito.executeAndReturnKey(params);
 		} catch (Exception e) {
@@ -65,6 +65,8 @@ public class DefeitoDaoImpl implements DefeitoDao {
 	@Override
 	public Defeito findByName(String nomeDefeito) {
 		try {
+			LOGGER.info("Inicio do método findByName()");
+			
 			MapSqlParameterSource params = new MapSqlParameterSource();
 			StringBuilder sql = new StringBuilder("SELECT * FROM TB_DEFEITO WHERE UPPER(DESCRICAO) = :defeito");
 			
@@ -73,9 +75,32 @@ public class DefeitoDaoImpl implements DefeitoDao {
 			
 			Defeito defeitoCadastrado = template.queryForObject(sql.toString(), params, new DefeitoRowMapper());
 			
+			LOGGER.info("Fim do método findByName()");
+			
 			return defeitoCadastrado;
 		} catch (EmptyResultDataAccessException e) {
-			LOGGER.error(String.format("Defeito %s não encontrado", nomeDefeito));
+			LOGGER.error(String.format("Não existe cadastro de defeito de id %s", nomeDefeito));
+			return null;
+		}
+	}
+
+	@Override
+	public Defeito findById(Integer defeitoId) {
+		try {
+			LOGGER.info("Inicio do método findById()");
+			
+			MapSqlParameterSource params = new MapSqlParameterSource();
+			StringBuilder sql = new StringBuilder("SELECT * FROM TB_DEFEITO WHERE ID = :defeitoId");
+			
+			params.addValue("defeitoId", defeitoId);
+			
+			Defeito defeitoCadastrado = template.queryForObject(sql.toString(), params, new DefeitoRowMapper());
+			
+			LOGGER.info("Fim do método findById()");
+			
+			return defeitoCadastrado;
+		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(String.format("Não existe cadastro de defeito de id %d", defeitoId));
 			return null;
 		}
 	}

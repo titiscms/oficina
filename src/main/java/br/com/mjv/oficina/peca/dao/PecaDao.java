@@ -33,5 +33,12 @@ public interface PecaDao {
 	 * @return
 	 */
 	Peca findByName(String nomePeca);
+
+	/**
+	 * Método para recuperar uma {@link Peca} da base de dados passando o id da peça
+	 * @param pecaId
+	 * @return
+	 */
+	Peca findById(Integer pecaId);
 	
 }

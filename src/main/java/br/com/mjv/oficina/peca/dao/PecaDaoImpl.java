@@ -88,6 +88,8 @@ public class PecaDaoImpl implements PecaDao {
 	@Override
 	public Peca findByName(String nomePeca) {
 		try {
+			LOGGER.info("Inicio do método findByName()");
+			
 			MapSqlParameterSource params = new MapSqlParameterSource();
 			StringBuilder sql = new StringBuilder("SELECT * FROM TB_PECA WHERE UPPER(DESCRICAO) = :nomePeca");
 			
@@ -96,10 +98,34 @@ public class PecaDaoImpl implements PecaDao {
 			
 			Peca pecaCadastrada = template.queryForObject(sql.toString(), params, new PecaRowMapper());
 			
+			LOGGER.info("Fim do método findByName()");
+			
 			return pecaCadastrada;
 		} catch (EmptyResultDataAccessException e) {
 			LOGGER.error(String.format("Não existe cadastro da peça %s.", nomePeca));
 			return null;
 		}
-	}	
+	}
+
+	@Override
+	public Peca findById(Integer pecaId) {
+		try {
+			LOGGER.info("Inicio do método findById()");
+			
+			MapSqlParameterSource params = new MapSqlParameterSource();
+			StringBuilder sql = new StringBuilder("SELECT * FROM TB_PECA WHERE ID = :pecaId");
+			
+			params.addValue("pecaId", pecaId);
+			
+			Peca pecaCadastrada = template.queryForObject(sql.toString(), params, new PecaRowMapper());
+			
+			LOGGER.info("Fim do método findById()");
+			
+			return pecaCadastrada;
+		} catch (EmptyResultDataAccessException e) {
+			LOGGER.error(String.format("Não existe cadastro da peça de id %d.", pecaId));
+			return null;
+		}
+	}
+	
 }

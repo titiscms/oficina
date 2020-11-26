@@ -171,9 +171,9 @@
 					     var linha = $("<tr>");
 				
 					     linha.append(
-					     	$('<td>').text(registro.cliente),
-							$('<td>').text(formatData(registro.dataInclusao)),
-							$('<td>').text(registro.veiculo),
+					     	$('<td class="text-left">').text(registro.cliente),
+							$('<td class="text-left">').text(formatData(registro.dataInclusao)),
+							$('<td class="text-left">').text(registro.veiculo),
 							$('<td class="text-center">').html('<a href="/registro/' + registro.id + '" class="linkDetalhes">Ver detalhes</a>'),
 					     );
 							

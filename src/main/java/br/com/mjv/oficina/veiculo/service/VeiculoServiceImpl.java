@@ -67,5 +67,10 @@ public class VeiculoServiceImpl implements VeiculoService {
 	public List<VeiculoDto> findPecaAndDefeitoFromVeiculoById(Integer veiculoId) {
 		return veiculoDao.findPecaAndDefeitoFromVeiculoById(veiculoId);
 	}
+
+	@Override
+	public Veiculo findById(Integer veiculoId) {
+		return veiculoDao.findById(veiculoId);
+	}
 	
 }

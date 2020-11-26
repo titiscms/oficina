@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import br.com.mjv.oficina.exception.DataInvalidaException;
 import br.com.mjv.oficina.registro.dao.RegistroDao;
 import br.com.mjv.oficina.registro.dto.RegistroDto;
 import br.com.mjv.oficina.registro.filter.RegistroFilter;
@@ -50,12 +49,11 @@ public class RegistroServiceImpl implements RegistroService {
 			
 			LOGGER.info("Fim do método findRegistroByFilter()");
 			
-			return registroDao.findRegistroByFilter(filter);
 		} catch (ParseException e) {
-			LOGGER.error("Erro na conversação da data a ser pesquisada");
-			throw new DataInvalidaException(filter.getDataInicio(), filter.getDataFim());
+			LOGGER.error("Erro na conversão da data a ser pesquisada");
 		}
 
+		return registroDao.findRegistroByFilter(filter);
 	}
 
 	@Override
@@ -98,6 +96,11 @@ public class RegistroServiceImpl implements RegistroService {
 		String dataInicioFormatada = output.format(dataInicioDate);
 		
 		return dataInicioFormatada;
+	}
+
+	@Override
+	public Registro findById(Integer registroId) {
+		return registroDao.findById(registroId);
 	}
 	
 }

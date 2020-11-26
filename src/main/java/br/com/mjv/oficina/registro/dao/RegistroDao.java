@@ -15,7 +15,7 @@ public interface RegistroDao {
 	List<RegistroDto> listAll();
 	
 	/**
-	 * Método pra buscar um {@link Registro} da base de dados passando o id como referência.
+	 * Método pra buscar um {@link Registro} da base de dados passando o id do registro como referência.
 	 * @param id
 	 * @return
 	 */

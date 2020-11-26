@@ -16,7 +16,7 @@
 		<link rel="stylesheet" href="/css/layout.css">
 		<!-- CSS -->
 		<style type="text/css">
-			.acesso p {
+			.data p {
 				margin-bottom: 0;
 				color: #808080;
 				font-size: 14px;
@@ -55,7 +55,7 @@
 									<input type="text" class="form-control inputGroupLarge js-input" id="inputCliente" 
 										   name="cliente" autocomplete="off" />
 								</div>
-								<div class="form-group col-md-3 align-self-center acesso">
+								<div class="form-group col-md-3 align-self-center data">
 									<p class="text-right">Acesso: <fmt:formatDate value="${acesso}" pattern="dd/MM/yyyy"/></p>
 									<p class="text-right">Horário: <fmt:formatDate value="${acesso}" pattern="HH:mm:ss"/></p>
 								</div>
@@ -157,9 +157,9 @@
 				        var linha = $("<tr>");
 
 				        linha.append(
-				        	$('<td>').html('<input class="form-check" type="checkbox" value="' + defeitoAndPecaFromVeiculo.defeitoId + '_' + defeitoAndPecaFromVeiculo.pecaId + '" name="idsItem" />'),
-							$('<td>').text(defeitoAndPecaFromVeiculo.defeito),
-							$('<td>').text(defeitoAndPecaFromVeiculo.peca)
+				        	$('<td class="text-left">').html('<input class="form-check" type="checkbox" value="' + defeitoAndPecaFromVeiculo.defeitoId + '_' + defeitoAndPecaFromVeiculo.pecaId + '" name="idsItem" />'),
+							$('<td class="text-left">').text(defeitoAndPecaFromVeiculo.defeito),
+							$('<td class="text-left">').text(defeitoAndPecaFromVeiculo.peca)
 				        );
 
 				        linha.appendTo('.table');

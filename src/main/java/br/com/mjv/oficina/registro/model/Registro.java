@@ -23,7 +23,7 @@ public class Registro {
 	private Integer pecaId;
 	
 	private Integer veiculoId;
-
+	
 	public Integer getId() {
 		return id;
 	}

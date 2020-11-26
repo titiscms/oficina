@@ -60,4 +60,9 @@ public class PecaServiceImpl implements PecaService {
 		
 	}
 
+	@Override
+	public Peca findById(Integer pecaId) {
+		return pecaDao.findById(pecaId);
+	}
+
 }

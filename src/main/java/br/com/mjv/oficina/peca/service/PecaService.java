@@ -26,4 +26,11 @@ public interface PecaService {
 	 */
 	void addDefeitoToPeca(Integer[] defeitosId, String nomePeca);
 
+	/**
+	 * Método para recuperar uma {@link Peca} da base de dados passando o id da peça
+	 * @param pecaId
+	 * @return
+	 */
+	Peca findById(Integer pecaId);
+
 }
